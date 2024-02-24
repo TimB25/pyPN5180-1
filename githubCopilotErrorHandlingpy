@@ -1,0 +1,20 @@
+from PN5180 import PN5180
+import sys
+import time
+
+if __name__ == '__main__':
+    check_debug = sys.argv[1] if len(sys.argv) == 2 else ''
+    debug = True if check_debug == '-v' else False
+    try:
+        reader = PN5180(debug=debug)
+    except Exception as e:
+        print(f"Error creating reader: {e}")
+        
+    while True:
+        try:
+            cards = reader.inventory()
+            print(f"{len(cards)} card(s) detected: {' - '.join(cards)}")
+        except Exception as e:
+            print(f"Error reading cards: {e}")
+        
+        time.sleep(.4)

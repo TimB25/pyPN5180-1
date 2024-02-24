@@ -11,4 +11,8 @@ if __name__ == '__main__':
     while True:
         cards = reader.inventory()
         print(f"{len(cards)} card(s) detected: {' - '.join(cards)}")
+        
+
+        
         time.sleep(.4)
+
